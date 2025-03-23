@@ -8,36 +8,24 @@
 namespace jakubenglicky\SmsManager\Http\Response;
 
 use jakubenglicky\SmsManager\Message\Message;
+use jakubenglicky\SmsManager\IResponse;
 use Psr\Http\Message\ResponseInterface;
 
-final class Sent
+final class Sent implements IResponse
 {
-    /** @var string $body */
-    private $body;
+    private string $body;
 
-    /** @var bool $sent */
-    private $sent;
+    private bool $sent;
 
-    /** @var int $code */
-    private $code;
+    private int $code;
 
-    /**
-     * @var int $requestId
-     */
-    private $requestId;
+    private int $requestId;
 
-    /**
-     * @var Message
-     */
-    private $message;
+    private Message $message;
 
-    /**
-     * ApiResponse constructor.
-     * @param ResponseInterface $response
-     */
-    public function __construct(ResponseInterface $response, Message $message)
+    public function __construct(string $body, Message $message)
     {
-        $this->body = trim((string)$response->getBody());
+        $this->body = trim($body);
         $this->message = $message;
 
         $items = explode('|', $this->body);
@@ -52,45 +40,31 @@ final class Sent
         }
     }
 
-    /**
-     * Get info about sent
-     * @return bool
-     */
-    public function wasSent():bool
+
+    public function wasSent(): bool
     {
         return $this->sent;
     }
 
-    /**
-     * Get HTTP status code
-     * @return int
-     */
-    public function getCode():int
+
+    public function getCode(): int
     {
         return $this->code;
     }
 
-    /**
-     * Get full response body
-     * @return string
-     */
-    public function getBody():string
+
+    public function getBody(): string
     {
         return $this->body;
     }
 
-    /**
-     * Get request SMS Manager ID
-     * @return int
-     */
-    public function getRequestId():int
+
+    public function getRequestId(): int
     {
         return $this->requestId;
     }
 
-    /**
-     * @return Message
-     */
+ 
     public function getMessage(): Message
     {
         return $this->message;

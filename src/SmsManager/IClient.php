@@ -17,13 +17,13 @@ interface IClient
 {
     /**
      * @param Message $message
-     * @return Sent|Error
+     * @return IResponse
      */
     public function send(Message $message);
 
     /**
      * Get User Info from SMS Manager account
-     * @return UserInfo|Error
+     * @return IResponse
      */
     public function getUserInfo();
 }

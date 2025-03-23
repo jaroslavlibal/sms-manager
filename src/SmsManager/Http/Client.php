@@ -76,7 +76,7 @@ final class Client implements IClient
                     'message' => $message->getBody(),
                 ]
             ]);
-            return new Sent($res, $message);
+            return new Sent((string)$res->getBody(), $message);
         } catch (\Exception $clientEx) {
             return new Error($clientEx);
         }
@@ -102,7 +102,7 @@ final class Client implements IClient
                     'apikey' => $this->apiKey
                 ]
             ]);
-            return new UserInfo($res);
+            return new UserInfo((string)$res->getBody());
         } catch (\Exception $clientEx) {
             return new Error($clientEx);
         }

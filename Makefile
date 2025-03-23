@@ -1,7 +1,7 @@
 .PHONY: phpstan cs test
 
 phpstan:
-	./vendor/bin/phpstan analyse -c phpstan.neon --level 7 src tests
+	./vendor/bin/phpstan analyse --level max src
 
 cs:
 	./vendor/bin/phpcs src tests

@@ -126,14 +126,4 @@ final class Message
     {
         return $this->messageType;
     }
-
-    /**
-     * @deprecated
-     * @return PhoneNumber[]
-     * @throws UndefinedNumberException
-     */
-    public function getRecepitiens():array
-    {
-        return $this->getRecipients();
-    }
 }

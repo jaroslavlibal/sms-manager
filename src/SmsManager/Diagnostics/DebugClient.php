@@ -11,20 +11,15 @@ use jakubenglicky\SmsManager\Http\Response\Error;
 use jakubenglicky\SmsManager\Http\Response\Sent;
 use jakubenglicky\SmsManager\Http\Response\UserInfo;
 use jakubenglicky\SmsManager\IClient;
+use jakubenglicky\SmsManager\IResponse;
 use jakubenglicky\SmsManager\Message\Message;
 
 final class DebugClient implements IClient
 {
-    /**
-     * @var string
-     */
-    private $tempDir;
 
-    /**
-     * DebugClient constructor.
-     * @param string $tempDir
-     */
-    public function __construct($tempDir)
+    private string $tempDir;
+
+    public function __construct(string $tempDir)
     {
         @mkdir($tempDir . '/sms');
         $this->tempDir = $tempDir . '/sms';
@@ -32,12 +27,10 @@ final class DebugClient implements IClient
 
     /**
      * Fake send for debugging
-     * @param Message $message
-     * @return Sent|null
      * @throws \jakubenglicky\SmsManager\Exceptions\TextException
      * @throws \jakubenglicky\SmsManager\Exceptions\UndefinedNumberException
      */
-    public function send(Message $message): ?Sent
+    public function send(Message $message): IResponse
     {
         $data = '';
         $data .= $message->getBody() . '|';
@@ -45,18 +38,13 @@ final class DebugClient implements IClient
 
         $id = uniqid();
 
-        if ($message->getBody() != '') {
-            file_put_contents($this->tempDir . '/' . $id . '.sms', $data);
-            return new Sent(
-                new Response('OK|' . $id .'|' . $message->getCommaSeparateNumbers()),
-                $message
-            );
-        }
-        return null;
+        file_put_contents($this->tempDir . '/' . $id . '.sms', $data);
+
+        return new Sent('OK|' . $id .'|' . $message->getCommaSeparateNumbers(), $message);
     }
 
     public function getUserInfo()
     {
-        return new UserInfo(new Response('9999|SMSMANAGER|high'));
+        return new UserInfo('9999|SMSMANAGER|high');
     }
 }

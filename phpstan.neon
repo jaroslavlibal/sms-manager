@@ -1,4 +1,0 @@
-parameters:
-	ignoreErrors:
-		- '#Method jakubenglicky\\SmsManager\\Diagnostics\\Response::[A-Za-z]+\(\) should return [A-Za-z\<\>]+ but return statement is missing\.#'
-		- '#Method jakubenglicky\\SmsManager\\Diagnostics\\Response::[A-Za-z]+\(\) should return static\(jakubenglicky\\SmsManager\\Diagnostics\\Response\) but return statement is missing\.#'
