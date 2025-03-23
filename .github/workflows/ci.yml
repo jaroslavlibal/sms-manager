@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - master
-      
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -17,14 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Coding standard
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
 
       - name: Composer Update
         run: composer update
@@ -37,14 +37,14 @@ jobs:
     runs-on: ubuntu-latest
     name: PHPStan lv. 7
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@v4
         with:
-          php-version: '8.1'
+          php-version: '8.3'
 
       - name: Composer Update
         run: composer update
@@ -58,9 +58,9 @@ jobs:
     name: Unit Tests
     strategy:
       matrix:
-        version: [ 7.4, 8.0, 8.1 ]
+        version: [ 8.2, 8.3 ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
