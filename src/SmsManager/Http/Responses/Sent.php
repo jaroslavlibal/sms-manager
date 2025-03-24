@@ -9,7 +9,6 @@ namespace jakubenglicky\SmsManager\Http\Response;
 
 use jakubenglicky\SmsManager\Message\Message;
 use jakubenglicky\SmsManager\IResponse;
-use Psr\Http\Message\ResponseInterface;
 
 final class Sent implements IResponse
 {
@@ -19,7 +18,7 @@ final class Sent implements IResponse
 
     private int $code;
 
-    private int $requestId;
+    private ?int $requestId;
 
     private Message $message;
 
@@ -36,7 +35,7 @@ final class Sent implements IResponse
             $this->requestId = (int)$items[1];
         } else {
             $this->sent = false;
-            $this->code = (isset($items[1])) ? (int)$items[1] : 0;
+            $this->code = isset($items[1]) ? (int)$items[1] : 0;
         }
     }
 
@@ -59,7 +58,7 @@ final class Sent implements IResponse
     }
 
 
-    public function getRequestId(): int
+    public function getRequestId(): ?int
     {
         return $this->requestId;
     }

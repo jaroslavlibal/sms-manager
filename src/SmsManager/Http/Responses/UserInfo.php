@@ -8,7 +8,6 @@
 
 namespace jakubenglicky\SmsManager\Http\Response;
 
-use Psr\Http\Message\ResponseInterface;
 use jakubenglicky\SmsManager\IResponse;
 
 final class UserInfo implements IResponse
