@@ -2,6 +2,7 @@
 
 /**
  * Part of jakubenglicky/sms-manager
+ *
  * @author Jakub Englický
  */
 
@@ -22,7 +23,8 @@ final class Error implements IResponse
 {
     /**
      * ErrorResponse constructor.
-     * @param \Exception $exception
+     *
+     * @param  \Exception $exception
      * @throws ApiException
      * @throws ContentException
      * @throws CreditException

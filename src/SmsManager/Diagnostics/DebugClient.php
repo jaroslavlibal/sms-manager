@@ -2,6 +2,7 @@
 
 /**
  * Part of jakubenglicky/sms-manager
+ *
  * @author Jakub Englický
  */
 
@@ -27,6 +28,7 @@ final class DebugClient implements IClient
 
     /**
      * Fake send for debugging
+     *
      * @throws \jakubenglicky\SmsManager\Exceptions\TextException
      * @throws \jakubenglicky\SmsManager\Exceptions\UndefinedNumberException
      */

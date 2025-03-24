@@ -14,7 +14,7 @@ class MockClient implements IClient
 {
 
     /**
-     * @param Message $message
+     * @param  Message $message
      * @return IResponse
      */
     public function send(Message $message)
@@ -25,6 +25,7 @@ class MockClient implements IClient
 
     /**
      * Get User Info from SMS Manager account
+     *
      * @return UserInfo|Error
      */
     public function getUserInfo()

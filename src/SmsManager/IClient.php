@@ -16,13 +16,14 @@ use jakubenglicky\SmsManager\Message\Message;
 interface IClient
 {
     /**
-     * @param Message $message
+     * @param  Message $message
      * @return IResponse
      */
     public function send(Message $message);
 
     /**
      * Get User Info from SMS Manager account
+     *
      * @return IResponse
      */
     public function getUserInfo();
