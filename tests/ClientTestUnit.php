@@ -18,6 +18,13 @@ final class ClientTestUnit extends TestCase
         $sent = $client->send($msg);
 
         $this->assertTrue($sent instanceof Sent);
+        $this->assertTrue($sent instanceof Sent);
+        $this->assertTrue($sent->wasSent());
+        $this->assertTrue(is_integer($sent->getRequestId()));
+        $this->assertTrue(is_string($sent->getBody()));
+        $this->assertSame(count(explode('|', $sent->getBody())), 3);
+        $this->assertTrue($sent->getMessage() instanceof Message);
+        $this->assertSame($sent->getMessage()->getBody(), 'Test message');
     }
 
 }
