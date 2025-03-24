@@ -30,7 +30,7 @@ jobs:
         run: composer update
 
       - name: CS Check
-        run: vendor/bin/phpcs --standard=ruleset.xml --extensions=php,phpt src/ tests/
+        run: make cs
 
   phpstan:
     timeout-minutes: 2
@@ -50,7 +50,7 @@ jobs:
         run: composer update
 
       - name: PHPStan lv. 7
-        run: vendor/bin/phpstan.phar analyse -l 7 src
+        run: make phpstan
 
   unit:
     timeout-minutes: 2
@@ -73,4 +73,4 @@ jobs:
         run: composer update
 
       - name: Nette Tester
-        run: vendor/bin/tester tests/
+        run: make test
