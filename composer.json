@@ -21,7 +21,8 @@
     "nette/tester": "^2.0",
     "nette/di": "^2.4",
     "squizlabs/php_codesniffer": "*",
-    "phpstan/phpstan": "^2.1"
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^12"
   },
 
   "autoload": {
